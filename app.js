@@ -28,7 +28,7 @@ app.post('/', (req, res) => {
         status: status,
         id: newId
     })
-    res.json({ tasks })
+    res.json(tasks)
 
 
 })
@@ -42,13 +42,12 @@ app.put('/:id', (req, res) => {
     if (taskIndex !== -1) {
         
         tasks[taskIndex] = {
-            //...tasks[taskIndex],
-            nome: nome,
+            nome: nome, 
             descricao: descricao,
             status: status
         }
         
-        res.json({ message: "Tarefa Atualizada.", task: tasks[taskIndex] })
+        res.json(tasks[taskIndex])
     }
     else {
         res.status(404).json({ message: "Tarefa nao encontrada" })
