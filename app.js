@@ -18,18 +18,15 @@ app.get("/task", (req, res) => {
 
 app.post('/task', (req, res) => {
 
-    const { id, nome, descricao, status } = req.body
+    const { id, nome, status } = req.body
 
     tasks.push({
-
         nome: nome,
-        decricao: descricao,
         status: status,
         id: id
     })
     res.json(tasks)
-
-
+    
 })
 
 app.put('/:id', (req, res) => {
