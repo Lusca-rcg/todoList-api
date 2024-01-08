@@ -1,32 +1,31 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const uuid = require('uuid');
+const cors = require('cors');
 const app = express();
 const tasks = []
 const port = 3000
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.listen(port, () => {
     console.log('Server is running... http://localhost:3000')
 })
 
-app.get("/", (req, res) => {
+app.get("/task", (req, res) => {
     res.json(tasks)
 })
 
-app.post('/', (req, res) => {
+app.post('/task', (req, res) => {
 
     const { id, nome, descricao, status } = req.body
-    const newId = uuid.v4()
-    tasks.id = newId
 
     tasks.push({
 
         nome: nome,
         decricao: descricao,
         status: status,
-        id: newId
+        id: id
     })
     res.json(tasks)
 
